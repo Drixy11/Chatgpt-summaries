@@ -1,0 +1,27 @@
+name: Add or Update Summary File
+
+on:
+  workflow_dispatch:
+    inputs:
+      filename:
+        description: 'Name of the file to add/update (e.g. my_project.md)'
+        required: true
+      content:
+        description: 'Markdown content (escaped)'
+        required: true
+
+jobs:
+  push-summary:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v4
+
+    - name: Create or update markdown file
+      run: |
+        echo "${{ github.event.inputs.content }}" > "${{ github.event.inputs.filename }}"
+        git config --global user.name "chatgpt-actions-bot"
+        git config --global user.email "bot@example.com"
+        git add "${{ github.event.inputs.filename }}"
+        git commit -m "Update ${{ github.event.inputs.filename }}"
+        git push
