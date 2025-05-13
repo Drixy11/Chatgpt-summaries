@@ -1,0 +1,1 @@
+# ChatGPT Conversations Summary  This file contains summaries of key topics discussed with ChatGPT.  ## Topics Covered - How to create and manage conversation summaries - Using GitHub for storing and organizing markdown files - Automating workflows with GitHub Actions
